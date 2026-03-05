@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Coberturas Bricolaje</title>
+<meta name="theme-color" content="#E8112D">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Bricolaje">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bricolaje">
+<meta name="description" content="Guía de coberturas de bricolaje para reparadores colaboradores">
+
+<!-- ═══ Open Graph ═══ -->
+<meta property="og:title" content="Coberturas Bricolaje">
+<meta property="og:description" content="Guía de coberturas de bricolaje para reparadores colaboradores">
+<meta property="og:type" content="website">
+
+<!-- ═══ Favicon pestaña navegador (32px primero = estándar Chrome/Firefox) ═══ -->
+<link rel="icon" type="image/x-icon" href="./favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./icons/icon-16.png">
+<link rel="icon" type="image/png" sizes="48x48" href="./icons/icon-48.png">
+
+<!-- ═══ PWA / iOS / Android ═══ -->
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="167x167" href="./icons/icon-167.png">
+<link rel="apple-touch-icon" sizes="152x152" href="./icons/icon-152.png">
+<link rel="apple-touch-icon" sizes="120x120" href="./icons/icon-120.png">
+<meta name="msapplication-TileImage" content="./icons/icon-144.png">
+<meta name="msapplication-TileColor" content="#E8112D">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red:#E8112D; --red-dark:#B50021;
+  --green:#1B7A45; --green-bg:#F0FAF4; --green-border:#A8DFC0;
+  --red-bg:#FFF0F2; --red-border:#FFAAB5;
+  --blue:#1565C0; --blue-bg:#EEF4FF; --blue-border:#BAD0F5;
+  --grey:#607080; --grey-bg:#F4F6F8; --grey-border:#C8D4DC;
+  --yellow-bg:#FFFBEA; --yellow-border:#F5C842; --yellow-text:#7A5800;
+  --white:#FFFFFF; --body-bg:#F8F9FB; --text:#1A2330; --text-light:#4A5568;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+body{font-family:'Nunito Sans',sans-serif;background:var(--body-bg);color:var(--text);min-height:100vh;max-width:480px;margin:0 auto;overflow-x:hidden;}
+
+/* SCREENS */
+.screen{display:none;}
+.screen.active{display:block;animation:fadeIn 0.2s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:none;}}
+
+/* HOME */
+.home-wrap{padding:18px 10px 28px;}
+.home-title-card{background:#fff;border:1.5px solid var(--red);border-left:4px solid var(--red);border-radius:14px;padding:22px 20px 18px;box-shadow:-4px 4px 0 rgba(232,17,45,0.14),0 1px 8px rgba(0,0,0,0.05);margin:0 -4px 18px;text-align:center;}
+.home-title-card h1{font-family:'Nunito',sans-serif;font-size:28px;font-weight:900;color:var(--red);letter-spacing:-0.4px;line-height:1.15;}
+.home-title-card p{font-size:15px;color:var(--text-light);margin-top:5px;font-weight:600;}
+
+.menu-label{font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;color:var(--grey);text-transform:uppercase;letter-spacing:1px;margin-bottom:11px;}
+.menu-grid-4{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.menu-card{background:var(--white);border-radius:14px;padding:18px 10px 14px;cursor:pointer;transition:all 0.18s;text-align:center;overflow:hidden;}
+.menu-card:active{transform:scale(0.955);}
+.card-green{background:#F4FAF8;border:1px solid #86C8A0;border-left:3px solid #1B7A45;}
+.card-green .menu-card-title{color:#1B7A45;}
+.card-blue{background:#F5F9FF;border:1px solid #90B8E8;border-left:3px solid #1565C0;}
+.card-blue .menu-card-title{color:#1565C0;}
+.card-grey{background:#F4F6F8;border:1px solid #C8D4DC;border-left:3px solid #607080;}
+.card-grey .menu-card-title{color:#607080;}
+.card-teal{background:#F0FAFA;border:1px solid #86C8BF;border-left:3px solid #00796B;}
+.card-teal .menu-card-title{color:#00796B;}
+.card-purple{background:#F8F5FF;border:1px solid #C3A8E0;border-left:3px solid #6A1B9A;}
+.card-purple .menu-card-title{color:#6A1B9A;}
+.card-amber{background:#FFFCF0;border:1px solid #E8C840;border-left:3px solid #F57F17;}
+.card-amber .menu-card-title{color:#F57F17;}
+.menu-card-icon{display:flex;justify-content:center;margin-bottom:10px;}
+.menu-card-title{font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;line-height:1.3;}
+
+/* WHAT pill */
+.what-card{background:var(--red);border-radius:40px;padding:13px 22px;cursor:pointer;transition:all 0.18s;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:14px;box-shadow:-3px 3px 0 rgba(180,0,30,0.3),0 2px 10px rgba(232,17,45,0.2);}
+.what-card:active{transform:scale(0.97);}
+.what-card span{font-family:'Nunito',sans-serif;font-size:16px;font-weight:800;color:#fff;letter-spacing:0.2px;}
+
+/* AVISO */
+.aviso-card{margin-top:18px;background:var(--yellow-bg);border:1.5px solid var(--yellow-border);border-left:4px solid var(--yellow-border);border-radius:14px;padding:13px 15px;display:flex;gap:11px;align-items:flex-start;box-shadow:-4px 4px 0 rgba(245,200,66,0.20);}
+.aviso-icon{font-size:20px;flex-shrink:0;margin-top:1px;}
+.aviso-text{font-size:13px;color:var(--yellow-text);line-height:1.55;font-weight:600;}
+.aviso-text strong{display:block;font-size:13px;font-weight:800;margin-bottom:3px;letter-spacing:0.3px;}
+.aviso-text em{display:block;margin-top:5px;font-style:normal;font-weight:700;opacity:0.72;font-size:12px;}
+
+/* PAGE */
+.page-content{padding:14px 10px 36px;}
+.page-title-card{background:#fff;border:1.5px solid var(--red);border-left:4px solid var(--red);border-radius:14px;padding:14px 16px 13px;margin:0 -2px 14px;display:flex;align-items:center;gap:12px;box-shadow:-4px 4px 0 rgba(232,17,45,0.14),0 1px 8px rgba(0,0,0,0.05);}
+.page-title-card h1{font-family:'Nunito',sans-serif;font-size:22px;font-weight:900;color:var(--red);line-height:1.2;}
+.page-title-card p{font-size:14px;color:var(--text-light);margin-top:3px;}
+.ptc-icon{flex-shrink:0;}
+
+/* BACK BUTTON — standalone, not inside toggleable cards */
+.ptc-back{width:34px;height:34px;border:1.5px solid rgba(232,17,45,0.25);border-left:3px solid var(--red);background:#FFF4F5;cursor:pointer;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.16s;box-shadow:-3px 3px 0 rgba(232,17,45,0.14);}
+.ptc-back:active{transform:scale(0.91);}
+.ptc-back svg{width:18px;height:18px;fill:none;stroke:var(--red);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+
+/* SECTION CARDS — click only on header */
+.section-card{border-radius:14px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.08);}
+.sc-header{padding:13px 16px;display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;}
+.sc-header h2{font-family:'Nunito',sans-serif;font-size:17px;font-weight:800;flex:1;line-height:1.3;}
+.chevron{font-size:13px;opacity:0.75;transition:transform 0.22s;flex-shrink:0;}
+.section-card.open .chevron{transform:rotate(180deg);}
+.sc-body{display:none;padding:14px 16px;}
+.section-card.open .sc-body{display:block;}
+
+.card-cobertura{background:var(--green-bg);border:2px solid var(--green-border);}
+.card-cobertura .sc-header{background:var(--green);}
+.card-cobertura .sc-header h2,.card-cobertura .chevron{color:#fff;}
+.card-exclusion{background:var(--red-bg);border:2px solid var(--red-border);}
+.card-exclusion .sc-header{background:var(--red);}
+.card-exclusion .sc-header h2,.card-exclusion .chevron{color:#fff;}
+.card-info{background:var(--blue-bg);border:2px solid var(--blue-border);}
+.card-info .sc-header{background:var(--blue);}
+.card-info .sc-header h2,.card-info .chevron{color:#fff;}
+.card-neutral{background:var(--grey-bg);border:2px solid var(--grey-border);}
+.card-neutral .sc-header{background:#607080;}
+.card-neutral .sc-header h2,.card-neutral .chevron{color:#fff;}
+.card-platino{background:#FFF0F2;border:2px solid #FFAAB5;}
+.card-platino .sc-header{background:#E8112D;}
+.card-platino .sc-header h2,.card-platino .chevron{color:#fff;}
+.card-platino .sc-body{padding:14px 16px;}
+
+/* LISTS */
+.item-list{list-style:none;}
+.item-list li{padding:9px 0;border-bottom:1px solid rgba(0,0,0,0.07);font-size:15.5px;line-height:1.65;color:var(--text);display:flex;gap:9px;align-items:flex-start;}
+.item-list li:last-child{border-bottom:none;}
+.li-icon{flex-shrink:0;font-size:16px;margin-top:1px;}
+.sub-list{list-style:none;margin-top:8px;padding-left:4px;}
+.sub-list li{padding:5px 0;display:flex;gap:8px;align-items:flex-start;font-size:15px;border-bottom:none;}
+.sub-arrow{color:#1B7A45;font-weight:700;flex-shrink:0;}
+
+/* BOXES */
+.warn-box{background:#FFF8E1;border:1.5px solid #FFD54F;border-radius:12px;padding:11px 13px;margin-bottom:12px;font-size:15.5px;color:#5D4037;line-height:1.6;display:flex;gap:9px;align-items:flex-start;}
+.info-box{background:#EBF5FB;border:1.5px solid #85C1E9;border-radius:12px;padding:11px 13px;margin-bottom:12px;font-size:15.5px;color:#154360;line-height:1.6;display:flex;gap:9px;align-items:flex-start;}
+.green-box{background:var(--green-bg);border:1.5px solid var(--green-border);border-radius:12px;padding:11px 13px;margin-bottom:12px;font-size:15.5px;color:#14532D;line-height:1.6;display:flex;gap:9px;align-items:flex-start;}
+.wi{font-size:19px;flex-shrink:0;}
+
+/* STEP CARDS */
+.step-card{background:#fff;border-radius:12px;padding:13px 14px;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start;box-shadow:0 1px 5px rgba(0,0,0,0.07);}
+.step-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-size:12px;font-weight:900;flex-shrink:0;color:#fff;}
+.step-num.green{background:var(--green);}
+.step-num.blue{background:var(--blue);}
+.step-content h3{font-family:'Nunito',sans-serif;font-size:16px;font-weight:800;margin-bottom:3px;}
+.step-content p{font-size:15.5px;color:var(--text-light);line-height:1.6;}
+
+/* POLIZA ITEMS */
+.poliza-item{background:#fff;border-radius:12px;padding:13px 14px;margin-bottom:10px;border-left:5px solid var(--green);box-shadow:0 1px 5px rgba(0,0,0,0.07);}
+.poliza-item.info{border-left-color:var(--blue);}
+.poliza-item h3{font-family:'Nunito',sans-serif;font-size:16px;font-weight:800;margin-bottom:5px;}
+.poliza-item p{font-size:15.5px;color:var(--text-light);line-height:1.6;}
+
+/* RED NOTICE */
+.red-notice{background:#fff;border:1.5px solid var(--red);border-left:4px solid var(--red);border-radius:14px;padding:13px 15px;display:flex;gap:11px;align-items:flex-start;box-shadow:-4px 4px 0 rgba(232,17,45,0.14);margin-top:14px;}
+.red-notice-text{font-size:15px;color:var(--text);line-height:1.6;font-weight:600;}
+.red-notice-text strong{color:var(--red);}
+
+/* SUBSECTION LABEL */
+.subsec-label{font-family:'Nunito',sans-serif;font-size:12.5px;font-weight:800;color:var(--grey);text-transform:uppercase;letter-spacing:1px;margin:14px 0 8px;padding-left:2px;}
+
+::-webkit-scrollbar{display:none;}
+*{scrollbar-width:none;}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════
+     HOME
+════════════════════════════════ -->
+<div class="screen active" id="screen-home">
+  <div class="home-wrap">
+
+    <div class="home-title-card">
+      <h1>Coberturas Bricolaje</h1>
+      <p>Guía para reparadores colaboradores</p>
+    </div>
+
+    <div class="what-card" onclick="goTo('screen-quees')">
+      <span>🔍 ¿Qué es Bricolaje del Hogar?</span>
+    </div>
+
+    <div class="menu-label">Selecciona un oficio</div>
+
+    <div class="menu-grid-4">
+      <div class="menu-card card-green" onclick="goTo('screen-fontaneria')">
+        <div class="menu-card-icon"><span style="font-size:36px;line-height:1">🔧</span></div>
+        <div class="menu-card-title">Fontanería</div>
+      </div>
+      <div class="menu-card card-green" onclick="goTo('screen-albanileria')">
+        <div class="menu-card-icon"><span style="font-size:36px;line-height:1">🧱</span></div>
+        <div class="menu-card-title">Albañilería</div>
+      </div>
+      <div class="menu-card card-green" onclick="goTo('screen-carpinteria')">
+        <div class="menu-card-icon"><span style="font-size:36px;line-height:1">🔨</span></div>
+        <div class="menu-card-title">Carpintería de Madera</div>
+      </div>
+      <div class="menu-card card-blue" onclick="goTo('screen-electricidad')">
+        <div class="menu-card-icon"><span style="font-size:36px;line-height:1">🔌</span></div>
+        <div class="menu-card-title">Electricidad</div>
+      </div>
+      <div class="menu-card card-teal" onclick="goTo('screen-mantenimiento')">
+        <div class="menu-card-icon"><span style="font-size:36px;line-height:1">🛠️</span></div>
+        <div class="menu-card-title">Mantenimientos Varios</div>
+      </div>
+      <div class="menu-card card-purple" onclick="goTo('screen-tecnologico')">
+        <div class="menu-card-icon"><span style="font-size:36px;line-height:1">💻</span></div>
+        <div class="menu-card-title">Bricolaje Tecnológico</div>
+      </div>
+      <div class="menu-card card-amber" onclick="goTo('screen-bricomercio')">
+        <div class="menu-card-icon"><span style="font-size:36px;line-height:1">🏪</span></div>
+        <div class="menu-card-title">Bricomercio</div>
+      </div>
+      <div class="menu-card card-grey" onclick="goTo('screen-platino')">
+        <div class="menu-card-icon"><span style="font-size:36px;line-height:1">⭐</span></div>
+        <div class="menu-card-title">Pólizas Hogar Platino</div>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:flex-end;margin-top:18px;margin-bottom:10px;">
+      <button onclick="document.getElementById('info-modal').style.display='flex'"
+        style="background:#1A2330;color:#fff;border:none;border-radius:20px;padding:6px 18px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:0.3px;box-shadow:0 2px 8px rgba(0,0,0,0.18);">
+        Info
+      </button>
+    </div>
+
+    <div class="aviso-card">
+      <span class="aviso-icon">⚠️</span>
+      <div class="aviso-text">
+        <strong>AVISO LEGAL</strong>
+        Herramienta de consulta con fines informativos, de uso exclusivo para reparadores colaboradores. No recoge datos ni interactúa con sistemas corporativos. No sustituye los canales o herramientas oficiales. De uso voluntario.
+        <em>Ante cualquier duda, consulta siempre con el departamento técnico.</em>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ MODAL INFO ═══ -->
+<div id="info-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:999;align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)this.style.display='none'">
+  <div style="background:#fff;border-radius:18px;max-width:400px;width:100%;box-shadow:0 8px 32px rgba(0,0,0,0.22);overflow:hidden;">
+    <div style="background:#E8112D;padding:16px 20px 14px;display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-family:'Nunito',sans-serif;font-size:16px;font-weight:800;color:#fff;">📱 Instalar la app</span>
+      <button onclick="document.getElementById('info-modal').style.display='none'"
+        style="background:rgba(255,255,255,0.2);border:none;color:#fff;width:28px;height:28px;border-radius:50%;font-size:16px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;">✕</button>
+    </div>
+    <div style="padding:18px 20px 20px;">
+      <div style="margin-bottom:14px;display:flex;gap:13px;align-items:flex-start;">
+        <span style="font-size:22px;flex-shrink:0;">🤖</span>
+        <div><div style="font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;color:#1A2330;margin-bottom:3px;">Android (Chrome)</div>
+        <div style="font-size:13px;color:#4A5568;line-height:1.5;">Abre la URL → menú ⋮ → <em>"Añadir a pantalla de inicio"</em></div></div>
+      </div>
+      <div style="margin-bottom:14px;display:flex;gap:13px;align-items:flex-start;">
+        <span style="font-size:22px;flex-shrink:0;">🍎</span>
+        <div><div style="font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;color:#1A2330;margin-bottom:3px;">iOS (Safari)</div>
+        <div style="font-size:13px;color:#4A5568;line-height:1.5;">Abre la URL → botón compartir □↑ → <em>"Añadir a pantalla de inicio"</em></div></div>
+      </div>
+      <div style="display:flex;gap:13px;align-items:flex-start;">
+        <span style="font-size:22px;flex-shrink:0;">🖥️</span>
+        <div><div style="font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;color:#1A2330;margin-bottom:3px;">PC (Chrome / Edge)</div>
+        <div style="font-size:13px;color:#4A5568;line-height:1.5;">Abre la URL → icono ⊕ en la barra de direcciones → <em>"Instalar"</em></div></div>
+      </div>
+      <div style="margin-top:16px;padding-top:13px;border-top:1px solid #E8ECEF;font-size:13px;color:#607080;text-align:center;font-style:italic;">
+        💡 La app funciona sin conexión después de la primera carga
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════
+     QUÉ ES BRICOLAJE
+════════════════════════════════ -->
+<div class="screen" id="screen-quees">
+  <div class="page-content">
+    <div class="page-title-card">
+      <button class="ptc-back" onclick="goBack()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <div class="ptc-icon"><span style="font-size:32px;line-height:1">🔍</span></div>
+      <div><h1>¿Qué es Bricolaje del Hogar?</h1><p>Condiciones generales del servicio</p></div>
+    </div>
+
+    <div class="section-card card-info open" id="sc-quees-1">
+      <div class="sc-header" onclick="toggleCard('sc-quees-1')">
+        <span style="font-size:17px">🏠</span><h2>Descripción del servicio</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <div class="step-card">
+          <div class="step-num blue">📋</div>
+          <div class="step-content"><h3>¿En qué consiste?</h3><p>Servicio para realizar pequeños trabajos de bricolaje <strong>no urgente</strong> en la vivienda asegurada, recogidos en un listado por oficios.</p></div>
+        </div>
+        <div class="step-card">
+          <div class="step-num blue">2x</div>
+          <div class="step-content"><h3>Intervenciones por anualidad</h3><p>Cada cliente dispone de <strong>2 intervenciones por anualidad</strong>. Cada intervención puede ser de <strong>3 o 5 horas</strong> de mano de obra según la póliza.</p></div>
+        </div>
+        <div class="step-card">
+          <div class="step-num blue">📍</div>
+          <div class="step-content"><h3>¿Qué cuenta como intervención?</h3><p>Cada desplazamiento a la vivienda asegurada, <strong>aunque no se llegue a realizar ningún trabajo</strong>.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card card-neutral" id="sc-quees-2">
+      <div class="sc-header" onclick="toggleCard('sc-quees-2')">
+        <span style="font-size:17px">🕐</span><h2>¿Cuándo y dónde se presta?</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <div class="poliza-item info"><h3>📅 Horario y plazo</h3><p>De <strong>lunes a viernes</strong>, no festivos, de <strong>9:00h a 19:00h</strong>. Plazo máximo <strong>48 horas</strong> desde la asignación.</p></div>
+        <div class="poliza-item info"><h3>🏠 Lugar</h3><p>Exclusivamente para la <strong>vivienda asegurada</strong>.</p></div>
+        <div class="poliza-item info"><h3>👷 Operarios y medios auxiliares</h3><p>El servicio se realiza siempre por <strong>un solo operario</strong>. Solo en casos realmente justificados, cuando el trabajo lo requiera por sus dimensiones, podrán acudir <strong>dos operarios</strong> previa autorización.<br><br>Si el trabajo debe ejecutarse a más de una altura de planta, incluiría montaje de <strong>andamios</strong>, también únicamente en casos justificados y autorizados.</p></div>
+      </div>
+    </div>
+
+    <div class="red-notice">
+      <span style="font-size:19px;flex-shrink:0">🧰</span>
+      <div class="red-notice-text">Para exceso de horas, materiales o si el trabajo no está en el listado, <strong style="color:var(--red)">ofrece Asistencia</strong>. Si el cliente la acepta, solicítalo desde <strong style="color:var(--red)">Appcol por IPS</strong>. El servicio lo paga el cliente.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════
+     FONTANERÍA
+════════════════════════════════ -->
+<div class="screen" id="screen-fontaneria">
+  <div class="page-content">
+    <div class="page-title-card" style="border-color:#1B7A45;border-left-color:#1B7A45;box-shadow:-4px 4px 0 rgba(27,122,69,0.14),0 1px 8px rgba(0,0,0,0.05);">
+      <button class="ptc-back" onclick="goBack()" style="border-color:rgba(27,122,69,0.25);border-left-color:#1B7A45;background:#F0FAF4;box-shadow:-3px 3px 0 rgba(27,122,69,0.14);">
+        <svg viewBox="0 0 24 24" style="stroke:#1B7A45"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="ptc-icon"><span style="font-size:32px;line-height:1">🔧</span></div>
+      <div><h1 style="color:#1B7A45">Fontanería</h1><p>Coberturas de fontanería en bricolaje</p></div>
+    </div>
+
+    <div class="section-card card-cobertura open" id="sc-font-1">
+      <div class="sc-header" onclick="toggleCard('sc-font-1')">
+        <span style="font-size:17px">✅</span><h2>¿Qué incluye el servicio?</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <ul class="item-list">
+          <li><span class="li-icon">✅</span><span>Cambiar <strong>mecanismos de cisterna</strong>.</span></li>
+          <li><span class="li-icon">✅</span><span>Sustituir e instalar <strong>grifos y llaves de paso</strong> donde exista toma de agua, siempre que no requiera obras de fontanería ni montaje/desmontaje de columnas o cabinas de hidromasaje.</span></li>
+          <li><span class="li-icon">✅</span><span>Sustituir <strong>detentores y llaves de corte</strong> de radiadores e instalar purgadores automáticos.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-card card-exclusion" id="sc-font-2">
+      <div class="sc-header" onclick="toggleCard('sc-font-2')">
+        <span style="font-size:17px">🚫</span><h2>No incluye el servicio</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <ul class="item-list">
+          <li><span class="li-icon">❌</span><span>Mano de obra que exceda del <strong>tiempo límite</strong> de la cobertura.</span></li>
+          <li><span class="li-icon">❌</span><span>Coste del material necesario (cualquier material que suministre el reparador se cobrará por asistencia).</span></li>
+          <li><span class="li-icon">❌</span><span>Sellado de fregaderos, mamparas, ventanas u otros sanitarios que <strong>no sean bañeras o platos de ducha</strong>.</span></li>
+          <li><span class="li-icon">❌</span><span>Rejuntado de alicatados fuera del volumen de la bañera o plato de ducha.</span></li>
+          <li><span class="li-icon">❌</span><span>Reparación de grifos.</span></li>
+          <li><span class="li-icon">❌</span><span>La instalación de cualquier elemento cuando no se pueda garantizar la fijación a la superficie.</span></li>
+          <li><span class="li-icon">❌</span><span>Montaje de elementos usados (no nuevos) en los que no se pueda comprobar el correcto funcionamiento.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="red-notice">
+      <span style="font-size:19px;flex-shrink:0">🧰</span>
+      <div class="red-notice-text">Para exceso de horas, materiales o si el trabajo no está en la lista, <strong style="color:var(--red)">ofrece Asistencia</strong>. Si el cliente la acepta, solicítalo desde <strong style="color:var(--red)">Appcol por IPS</strong>. El servicio lo paga el cliente.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════
+     ALBAÑILERÍA
+════════════════════════════════ -->
+<div class="screen" id="screen-albanileria">
+  <div class="page-content">
+    <div class="page-title-card" style="border-color:#1B7A45;border-left-color:#1B7A45;box-shadow:-4px 4px 0 rgba(27,122,69,0.14),0 1px 8px rgba(0,0,0,0.05);">
+      <button class="ptc-back" onclick="goBack()" style="border-color:rgba(27,122,69,0.25);border-left-color:#1B7A45;background:#F0FAF4;box-shadow:-3px 3px 0 rgba(27,122,69,0.14);">
+        <svg viewBox="0 0 24 24" style="stroke:#1B7A45"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="ptc-icon"><span style="font-size:32px;line-height:1">🧱</span></div>
+      <div><h1 style="color:#1B7A45">Albañilería</h1><p>Sellados y rejuntados cubiertos</p></div>
+    </div>
+
+    <div class="section-card card-cobertura open" id="sc-alba-1">
+      <div class="sc-header" onclick="toggleCard('sc-alba-1')">
+        <span style="font-size:17px">✅</span><h2>¿Qué incluye el servicio?</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <ul class="item-list">
+          <li><span class="li-icon">✅</span><span>Sellado de <strong>juntas deterioradas de bañera y plato de ducha</strong> con el alicatado y con la mampara (no se sellará la mampara con el alicatado).</span></li>
+          <li><span class="li-icon">✅</span><span><strong>Rejuntado de azulejos</strong> dentro del volumen que ocupa la bañera o plato de ducha.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-card card-exclusion" id="sc-alba-2">
+      <div class="sc-header" onclick="toggleCard('sc-alba-2')">
+        <span style="font-size:17px">🚫</span><h2>El servicio no incluye</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <ul class="item-list">
+          <li><span class="li-icon">❌</span><span>Sellado de <strong>fregaderos, mamparas, ventanas</strong> u otros sanitarios que no sean bañeras o platos de ducha.</span></li>
+          <li><span class="li-icon">❌</span><span>Rejuntado de alicatados <strong>fuera del volumen</strong> de la bañera o plato de ducha.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════
+     CARPINTERÍA DE MADERA
+════════════════════════════════ -->
+<div class="screen" id="screen-carpinteria">
+  <div class="page-content">
+    <div class="page-title-card" style="border-color:#1B7A45;border-left-color:#1B7A45;box-shadow:-4px 4px 0 rgba(27,122,69,0.14),0 1px 8px rgba(0,0,0,0.05);">
+      <button class="ptc-back" onclick="goBack()" style="border-color:rgba(27,122,69,0.25);border-left-color:#1B7A45;background:#F0FAF4;box-shadow:-3px 3px 0 rgba(27,122,69,0.14);">
+        <svg viewBox="0 0 24 24" style="stroke:#1B7A45"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="ptc-icon"><span style="font-size:32px;line-height:1">🔨</span></div>
+      <div><h1 style="color:#1B7A45">Carpintería de Madera</h1><p>Instalaciones de carpintería incluidas</p></div>
+    </div>
+
+    <div class="section-card card-cobertura open" id="sc-carp-1">
+      <div class="sc-header" onclick="toggleCard('sc-carp-1')">
+        <span style="font-size:17px">✅</span><h2>¿Qué incluye el servicio?</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <ul class="item-list">
+          <li><span class="li-icon">✅</span><span>Instalación de <strong>pletinas de terminación, embellecedores</strong> de unión entre dos suelos diferentes y protectores de esquina de pared.</span></li>
+          <li><span class="li-icon">✅</span><span>Instalación de <strong>tiradores, picaportes, manillas, muelles y pequeños pestillos</strong> en puertas interiores de madera. (Bisagras NO. Cajones NO).</span></li>
+          <li><span class="li-icon">✅</span><span>Montaje e instalación de <strong>muebles en Kit nuevos</strong>.</span></li>
+          <li><span class="li-icon">✅</span><span>En pólizas Hogar Selección: <strong>retirada de enseres a punto limpio</strong>.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-card card-exclusion" id="sc-carp-2">
+      <div class="sc-header" onclick="toggleCard('sc-carp-2')">
+        <span style="font-size:17px">🚫</span><h2>El servicio no incluye</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <ul class="item-list">
+          <li><span class="li-icon">❌</span><span>Instalación de <strong>bisagras o cajones</strong>.</span></li>
+          <li><span class="li-icon">❌</span><span>Mano de obra que exceda del tiempo límite de la cobertura.</span></li>
+          <li><span class="li-icon">❌</span><span>Coste del material (cualquier material que suministre el reparador se cobrará por asistencia).</span></li>
+          <li><span class="li-icon">❌</span><span>Montaje de muebles y elementos <strong>usados (no nuevos)</strong> en los que no se pueda comprobar el correcto funcionamiento.</span></li>
+          <li><span class="li-icon">❌</span><span>Instalación cuando la fijación <strong>no garantice su estabilidad</strong>.</span></li>
+          <li><span class="li-icon">❌</span><span>Casetas y construcciones auxiliares para jardín en plástico (no tienen consideración de muebles).</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════
+     ELECTRICIDAD
+════════════════════════════════ -->
+<div class="screen" id="screen-electricidad">
+  <div class="page-content">
+    <div class="page-title-card" style="border-color:#1565C0;border-left-color:#1565C0;box-shadow:-4px 4px 0 rgba(21,101,192,0.14),0 1px 8px rgba(0,0,0,0.05);">
+      <button class="ptc-back" onclick="goBack()" style="border-color:rgba(21,101,192,0.25);border-left-color:#1565C0;background:#EEF4FF;box-shadow:-3px 3px 0 rgba(21,101,192,0.14);">
+        <svg viewBox="0 0 24 24" style="stroke:#1565C0"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="ptc-icon"><span style="font-size:32px;line-height:1">🔌</span></div>
+      <div><h1 style="color:#1565C0">Electricidad</h1><p>Trabajos eléctricos de bricolaje</p></div>
+    </div>
+
+    <div class="section-card card-cobertura open" id="sc-elec-1">
+      <div class="sc-header" onclick="toggleCard('sc-elec-1')">
+        <span style="font-size:17px">✅</span><h2>¿Qué incluye el servicio?</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <ul class="item-list">
+          <li><span class="li-icon">✅</span><span>Instalación o sustitución de <strong>lámparas y apliques</strong> donde existan puntos de luz (incluye realización del taladro donde ya existe un punto de luz, y ventiladores con luz).</span></li>
+          <li><span class="li-icon">✅</span><span>Sustitución de <strong>enchufes, interruptores, bombillas y pulsadores de timbres</strong> (sin cambios de ubicación).</span></li>
+          <li><span class="li-icon">✅</span><span>Instalación de <strong>canaletas para ocultar cables</strong> (sin trabajos de albañilería).</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-card card-exclusion" id="sc-elec-2">
+      <div class="sc-header" onclick="toggleCard('sc-elec-2')">
+        <span style="font-size:17px">🚫</span><h2>El servicio no incluye</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <ul class="item-list">
+          <li><span class="li-icon">❌</span><span>Mano de obra que exceda del tiempo límite.</span></li>
+          <li><span class="li-icon">❌</span><span>Coste del material (cualquier material que suministre el reparador se cobrará por asistencia).</span></li>
+          <li><span class="li-icon">❌</span><span>Instalación cuando la fijación a la superficie <strong>no se pueda garantizar</strong>.</span></li>
+          <li><span class="li-icon">❌</span><span>Instalar un ventilador sin luz.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-card card-info" id="sc-elec-3">
+      <div class="sc-header" onclick="toggleCard('sc-elec-3')">
+        <span style="font-size:17px">⚡</span><h2>Bricolaje eléctrico para Iberdrola</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <div class="green-box"><span class="wi">⏱️</span><span>Cubre desplazamiento y hasta <strong>3 horas de mano de obra</strong>.</span></div>
+        <ul class="item-list">
+          <li><span class="li-icon">✅</span><span>Sustitución de <strong>mecanismos eléctricos</strong> (enchufes, interruptores y pulsadores).</span></li>
+          <li><span class="li-icon">✅</span><span>Conexiones y puesta en funcionamiento de frigoríficos, congeladores, lavadoras, secadoras, lavavajillas, hornos, cocina eléctrica y termo/calderas eléctricas (incluye conexión a toma existente de agua y desagüe).</span></li>
+          <li><span class="li-icon">✅</span><span>Conexión de televisores, DVD, consolas y equipamientos home cinema.</span></li>
+          <li><span class="li-icon">✅</span><span>Instalación de <strong>temporizadores y termostato</strong>.</span></li>
+          <li><span class="li-icon">✅</span><span>Instalación o sustitución de <strong>lámparas o apliques</strong>.</span></li>
+          <li><span class="li-icon">✅</span><span>Reparación de cableado (no sustitución de líneas), enchufes, interruptores, cuadro eléctrico, etc.</span></li>
+        </ul>
+        <div class="subsec-label">No incluye (Iberdrola)</div>
+        <ul class="item-list">
+          <li><span class="li-icon">❌</span><span>Coste de materiales empleados.</span></li>
+          <li><span class="li-icon">❌</span><span>Horas de mano de obra que superen las <strong>3 horas</strong>.</span></li>
+          <li><span class="li-icon">❌</span><span>Puntos de luz o instalaciones eléctricas nuevas ni las rozas necesarias.</span></li>
+          <li><span class="li-icon">❌</span><span>Tomas de agua y desagüe nuevas ni las rozas necesarias.</span></li>
+          <li><span class="li-icon">❌</span><span>Adecuación de instalaciones a normativas.</span></li>
+          <li><span class="li-icon">❌</span><span>Instalación o reparación de <strong>software</strong> en equipos electrónicos.</span></li>
+          <li><span class="li-icon">❌</span><span>Retirada de aparatos ni gestión de residuos.</span></li>
+          <li><span class="li-icon">❌</span><span>Revisiones o reparaciones de instalaciones eléctricas completas o equipos averiados.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="red-notice">
+      <span style="font-size:19px;flex-shrink:0">🧰</span>
+      <div class="red-notice-text">Para exceso de horas, materiales o si el trabajo no está en la lista, <strong style="color:var(--red)">ofrece Asistencia</strong>. Si el cliente la acepta, solicítalo desde <strong style="color:var(--red)">Appcol por IPS</strong>. El servicio lo paga el cliente.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════
+     MANTENIMIENTOS VARIOS
+════════════════════════════════ -->
+<div class="screen" id="screen-mantenimiento">
+  <div class="page-content">
+    <div class="page-title-card" style="border-color:#00796B;border-left-color:#00796B;box-shadow:-4px 4px 0 rgba(0,121,107,0.14),0 1px 8px rgba(0,0,0,0.05);">
+      <button class="ptc-back" onclick="goBack()" style="border-color:rgba(0,121,107,0.25);border-left-color:#00796B;background:#F0FAFA;box-shadow:-3px 3px 0 rgba(0,121,107,0.14);">
+        <svg viewBox="0 0 24 24" style="stroke:#00796B"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="ptc-icon"><span style="font-size:32px;line-height:1">🛠️</span></div>
+      <div><h1 style="color:#00796B">Mantenimientos Varios</h1><p>Trabajos de mantenimiento cubiertos</p></div>
+    </div>
+
+    <div class="section-card card-cobertura open" id="sc-mant-1">
+      <div class="sc-header" onclick="toggleCard('sc-mant-1')">
+        <span style="font-size:17px">✅</span><h2>¿Qué incluye el servicio?</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <ul class="item-list">
+          <li><span class="li-icon">✅</span><span>Colocación de <strong>accesorios de cocina y baño</strong>: toalleros, cestos, percheros, ganchos, jaboneras, portavasos, portarrollos y porta escobillas.</span></li>
+          <li><span class="li-icon">✅</span><span>Colocación de <strong>burletes</strong> en puertas o ventanas.</span></li>
+          <li><span class="li-icon">✅</span><span>Colocación de <strong>estanterías</strong>.</span></li>
+          <li><span class="li-icon">✅</span><span>Colocación o fijación de <strong>cuadros, vinilos decorativos, foto murales, espejos o figuras decorativas</strong> adosadas a paredes.</span></li>
+          <li><span class="li-icon">✅</span><span>Instalación de <strong>cortinas, visillos y estores</strong>.</span></li>
+          <li><span class="li-icon">✅</span><span>Instalación de <strong>soportes TV de hasta 32"</strong> (incluye colocar la TV en el soporte).</span></li>
+          <li><span class="li-icon">✅</span><span>Instalación de <strong>tendedero</strong> en terrazas, no en fachadas, sin medios auxiliares de descuelgue.</span></li>
+          <li><span class="li-icon">✅</span><span>Montaje e instalación de <strong>muebles kit nuevos</strong> (vendidos desmontados y empacados en cajas).</span></li>
+          <li><span class="li-icon">✅</span><span>Sustitución de <strong>placa vitrocerámica o de inducción</strong> sin cambio de ubicación, medidas ni modificación eléctrica.</span></li>
+          <li><span class="li-icon">✅</span><span>Instalación de <strong>canaletas para ocultar cables</strong> (sin albañilería).</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-card card-exclusion" id="sc-mant-2">
+      <div class="sc-header" onclick="toggleCard('sc-mant-2')">
+        <span style="font-size:17px">🚫</span><h2>El servicio no incluye</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <ul class="item-list">
+          <li><span class="li-icon">❌</span><span>Mano de obra que exceda del tiempo límite.</span></li>
+          <li><span class="li-icon">❌</span><span>Coste del material (cualquier material que suministre el reparador se cobrará por asistencia).</span></li>
+          <li><span class="li-icon">❌</span><span>Montaje de muebles <strong>usados (no nuevos)</strong> en los que no se pueda comprobar el correcto funcionamiento.</span></li>
+          <li><span class="li-icon">❌</span><span>Instalación cuando la fijación <strong>no garantice su estabilidad</strong>.</span></li>
+          <li><span class="li-icon">❌</span><span>Casetas y construcciones auxiliares para jardín en plástico.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="red-notice">
+      <span style="font-size:19px;flex-shrink:0">🧰</span>
+      <div class="red-notice-text">Para exceso de horas, materiales o si el trabajo no está en el listado, <strong style="color:var(--red)">ofrece Asistencia</strong>. Si el cliente la acepta, solicítalo desde <strong style="color:var(--red)">Appcol por IPS</strong>. El servicio lo paga el cliente.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════
+     BRICOLAJE TECNOLÓGICO
+════════════════════════════════ -->
+<div class="screen" id="screen-tecnologico">
+  <div class="page-content">
+    <div class="page-title-card" style="border-color:#6A1B9A;border-left-color:#6A1B9A;box-shadow:-4px 4px 0 rgba(106,27,154,0.14),0 1px 8px rgba(0,0,0,0.05);">
+      <button class="ptc-back" onclick="goBack()" style="border-color:rgba(106,27,154,0.25);border-left-color:#6A1B9A;background:#F8F5FF;box-shadow:-3px 3px 0 rgba(106,27,154,0.14);">
+        <svg viewBox="0 0 24 24" style="stroke:#6A1B9A"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="ptc-icon"><span style="font-size:32px;line-height:1">💻</span></div>
+      <div><h1 style="color:#6A1B9A">Bricolaje Tecnológico</h1><p>Equipamiento tecnológico</p></div>
+    </div>
+
+    <div class="section-card card-cobertura open" id="sc-tec-1">
+      <div class="sc-header" onclick="toggleCard('sc-tec-1')">
+        <span style="font-size:17px">✅</span><h2>¿Qué incluye el servicio?</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <ul class="item-list">
+          <li><span class="li-icon">✅</span><span>Instalación/desinstalación, <strong>puesta en marcha, conectividad y/o configuración</strong> del equipamiento tecnológico: TDT, DVD, Cámara Digital, Home Cinema, Video Digital, Ordenadores, TV y Vídeo Consolas.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-card card-exclusion" id="sc-tec-2">
+      <div class="sc-header" onclick="toggleCard('sc-tec-2')">
+        <span style="font-size:17px">🚫</span><h2>El servicio no incluye</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <ul class="item-list">
+          <li><span class="li-icon">❌</span><span>Mano de obra que exceda del <strong>tiempo límite</strong> de la cobertura.</span></li>
+          <li><span class="li-icon">❌</span><span>Coste del material (cualquier material que suministre el reparador se cobrará por asistencia).</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════
+     BRICOMERCIO
+════════════════════════════════ -->
+<div class="screen" id="screen-bricomercio">
+  <div class="page-content">
+    <div class="page-title-card" style="border-color:#F57F17;border-left-color:#F57F17;box-shadow:-4px 4px 0 rgba(245,127,23,0.14),0 1px 8px rgba(0,0,0,0.05);">
+      <button class="ptc-back" onclick="goBack()" style="border-color:rgba(245,127,23,0.25);border-left-color:#F57F17;background:#FFFCF0;box-shadow:-3px 3px 0 rgba(245,127,23,0.14);">
+        <svg viewBox="0 0 24 24" style="stroke:#F57F17"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="ptc-icon"><span style="font-size:32px;line-height:1">🏪</span></div>
+      <div><h1 style="color:#F57F17">Bricomercio</h1><p>Coberturas en locales comerciales</p></div>
+    </div>
+
+    <div class="section-card card-cobertura open" id="sc-bric-1">
+      <div class="sc-header" onclick="toggleCard('sc-bric-1')">
+        <span style="font-size:17px">✅</span><h2>¿Qué incluye el servicio?</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <ul class="item-list">
+          <li><span class="li-icon">✅</span><span>Sellado de <strong>juntas deterioradas en aseos o baños</strong>.</span></li>
+          <li><span class="li-icon">✅</span><span>Sustitución e instalación de <strong>grifos o válvulas</strong> por rotura o avería cuando exista toma de agua.</span></li>
+          <li><span class="li-icon">✅</span><span>Cambio de <strong>mecanismos de cisterna</strong> por rotura o avería.</span></li>
+          <li><span class="li-icon">✅</span><span>Sustitución de <strong>enchufes o interruptores</strong> deteriorados sin cambio de ubicación.</span></li>
+          <li><span class="li-icon">✅</span><span>Puesta en marcha, conectividad y configuración de equipos de visión/sonido: TDT, DVD, Cámara Digital, Home Cinema, Ordenadores, TV y Vídeo Consolas.</span></li>
+          <li><span class="li-icon">✅</span><span><strong>Ajustes de cierres y puertas</strong>.</span></li>
+          <li><span class="li-icon">✅</span><span>Ajustes y/o sustitución de <strong>cerraduras</strong>.</span></li>
+          <li><span class="li-icon">✅</span><span>En persianas de ventanas: sustitución de cintas, lamas, poleas, tirantillas, espigas y soportes de ejes, sin trabajos de albañilería o pintura.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-card card-exclusion" id="sc-bric-2">
+      <div class="sc-header" onclick="toggleCard('sc-bric-2')">
+        <span style="font-size:17px">🚫</span><h2>El servicio no incluye</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <ul class="item-list">
+          <li><span class="li-icon">❌</span><span>Asistencia que requiera <strong>albañilería y/o pintura</strong>.</span></li>
+          <li><span class="li-icon">❌</span><span>Montaje de andamios o trabajos en altura a más de <strong>5 metros</strong>.</span></li>
+          <li><span class="li-icon">❌</span><span>Trabajos sujetos a <strong>permisos y/o licencias administrativas</strong>.</span></li>
+          <li><span class="li-icon">❌</span><span>Coste de materiales adquiridos por el asegurado sin aceptación expresa.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-card card-info" id="sc-bric-3">
+      <div class="sc-header" onclick="toggleCard('sc-bric-3')">
+        <span style="font-size:17px">📋</span><h2>¿Cuándo y dónde se presta?</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <div class="step-card">
+          <div class="step-num blue">2x</div>
+          <div class="step-content"><h3>Intervenciones</h3><p>Máximo <strong>2 intervenciones por año y por local</strong>. Cuenta el desplazamiento aunque no se repare.</p></div>
+        </div>
+        <div class="step-card">
+          <div class="step-num blue">⏱</div>
+          <div class="step-content"><h3>Horas y materiales</h3><p>Desplazamiento + <strong>2 primeras horas</strong> de mano de obra. Materiales hasta <strong>50 € por intervención</strong> (IVA incluido).</p></div>
+        </div>
+        <div class="step-card">
+          <div class="step-num blue">📍</div>
+          <div class="step-content"><h3>Lugar</h3><p>Exclusivamente en el <strong>local indicado en la póliza</strong>.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════
+     PÓLIZAS HOGAR PLATINO
+════════════════════════════════ -->
+<div class="screen" id="screen-platino">
+  <div class="page-content">
+    <div class="page-title-card" style="border-color:#607080;border-left-color:#607080;box-shadow:-4px 4px 0 rgba(96,112,128,0.14),0 1px 8px rgba(0,0,0,0.05);">
+      <button class="ptc-back" onclick="goBack()" style="border-color:rgba(96,112,128,0.25);border-left-color:#607080;background:#F4F6F8;box-shadow:-3px 3px 0 rgba(96,112,128,0.14);">
+        <svg viewBox="0 0 24 24" style="stroke:#607080"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="ptc-icon"><span style="font-size:32px;line-height:1">⭐</span></div>
+      <div><h1 style="color:#607080">Pólizas Hogar Platino</h1><p>Coberturas adicionales exclusivas</p></div>
+    </div>
+
+    <div class="warn-box">
+      <span class="wi">⭐</span>
+      <div>Estas coberturas son <strong>adicionales</strong> a las coberturas estándar del servicio de Bricolaje del Hogar.</div>
+    </div>
+
+    <!-- Aire Acondicionado -->
+    <div class="section-card card-platino open" id="sc-plat-1">
+      <div class="sc-header" onclick="toggleCard('sc-plat-1')">
+        <span style="font-size:17px">❄️</span><h2>Aire Acondicionado</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <ul class="item-list">
+          <li><span class="li-icon">✅</span><span>Comprobación de la <strong>presión de gas</strong> de los equipos de climatización.</span></li>
+          <li><span class="li-icon">✅</span><span><strong>Desatasco de desagües</strong> de aparatos de climatización.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bricolaje Tecnológico Platino -->
+    <div class="section-card card-platino" id="sc-plat-2">
+      <div class="sc-header" onclick="toggleCard('sc-plat-2')">
+        <span style="font-size:17px">💻</span><h2>Bricolaje Tecnológico</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <ul class="item-list">
+          <li><span class="li-icon">✅</span><span>Instalación de <strong>dispositivos de domótica</strong> (termostatos y sensores de temperatura, humedad, gas, humo, apertura de puertas y ventanas, movimiento y luminosidad), cuando existan redes de comunicación cableadas o inalámbricas, y <strong>sin manipulación de instalaciones fijas</strong> de electricidad, fontanería o cerrajería.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Jardinería -->
+    <div class="section-card card-platino" id="sc-plat-3">
+      <div class="sc-header" onclick="toggleCard('sc-plat-3')">
+        <span style="font-size:17px">🌿</span><h2>Jardinería</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <ul class="item-list">
+          <li><span class="li-icon">✅</span><span>Sustitución de <strong>aspersores de riego</strong> deteriorados.</span></li>
+          <li><span class="li-icon">✅</span><span>Sustitución de <strong>centralita de riego automático</strong> y de <strong>electroválvulas</strong> de la red de riego.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Mantenimientos Varios Platino -->
+    <div class="section-card card-platino" id="sc-plat-4">
+      <div class="sc-header" onclick="toggleCard('sc-plat-4')">
+        <span style="font-size:17px">🛠️</span><h2>Mantenimientos Varios</h2><span class="chevron">▼</span>
+      </div>
+      <div class="sc-body">
+        <ul class="item-list">
+          <li><span class="li-icon">✅</span><span>
+            Sustitución de cinta, polea, tirantillas, espigas, recogedor y/o soportes en <strong>persianas enrollables</strong> de ventanas y puertas de acceso a terrazas, siempre que:
+            <ul class="sub-list">
+              <li><span class="sub-arrow">→</span><span>La persiana <strong>no sea de madera</strong> o de materiales descatalogados.</span></li>
+              <li><span class="sub-arrow">→</span><span><strong>No disponga</strong> de mecanismo eléctrico.</span></li>
+              <li><span class="sub-arrow">→</span><span><strong>No precise</strong> de ningún medio auxiliar de descuelgue para su reparación o sustitución.</span></li>
+            </ul>
+          </span></li>
+          <li><span class="li-icon">✅</span><span>Servicio de <strong>retirada de muebles, electrodomésticos o enseres a Punto Limpio</strong>.</span></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+const stack = [];
+let currentScreen = 'screen-home';
+
+function goTo(id) {
+  stack.push(currentScreen);
+  showScreen(id);
+}
+
+function goBack() {
+  if (!stack.length) return;
+  showScreen(stack.pop());
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById(id);
+  if (el) el.classList.add('active');
+  currentScreen = id;
+  window.scrollTo(0, 0);
+}
+
+function toggleCard(id) {
+  const card = document.getElementById(id);
+  if (card) card.classList.toggle('open');
+}
+
+showScreen('screen-home');
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('[SW] Registrado:', reg.scope))
+      .catch(err => console.warn('[SW] Error:', err));
+  });
+}
+</script>
+</body>
+</html>
